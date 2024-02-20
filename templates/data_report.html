@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Report</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/data-report">Data Report</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <h1>Data Report</h1>
+        {% for image in images %}
+        <div class="image-container">
+            <img src="{{ url_for('static', filename='images/' + image) }}" alt="{{ image }}">
+            <form action="{{ url_for('download_image', filename=image) }}" method="get">
+                <button type="submit">Download</button>
+            </form>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
